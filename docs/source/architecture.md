@@ -10,15 +10,15 @@ Django is the heart of the application, which powers our backend. We use Django 
 
 #### Django Rest Framework
 
-We use Django Rest Framework for writing and providing REST APIs. It's permission and serializers have helped write a maintainable codebase.
+We use Django Rest Framework for writing and providing rest APIs. It's permission and serializers have helped to write a maintainable codebase.
 
 #### RabbitMQ
 
-We currently use RabbitMQ for queueing submission messages which are then later on processed by a Python worker.
+We are currently using RabbitMQ for queueing submission messages which are  later on processed by a Python worker.
 
 #### PostgreSQL
 
-PostgresSQL is used as our primary datastore. All our tables currently reside in a single database named `evalai`
+PostgresSQL is used as our primary datastore. All our tables are currently resided in a single database named `evalai`
 
 #### Angular JS
 
