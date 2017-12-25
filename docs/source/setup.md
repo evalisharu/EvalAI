@@ -1,6 +1,6 @@
 # How to setup
 
-EvalAI can run on Linux, Cloud, Windows, and macOS platforms. Use the following list to choose the best installation path for you. The links under *Platform* take you straight to the installation instructions for that platform.
+EvalAI can run in Linux, Cloud, Windows, and macOS platforms. Use the following list to choose the best installation path for you. The links under the *Platform* takes you straight to the installation instructions to  that particular  platform.
 
 ## Ubuntu Installation Instructions
 
@@ -31,7 +31,7 @@ sudo apt-get install rabbitmq-server
 ```shell
 # only if pip is not installed
 sudo apt-get install python-pip python-dev build-essential
-# upgrade pip, not necessary
+# upgrade pip, (not necessary)
 sudo pip install --upgrade pip
 # upgrade virtualenv
 sudo pip install --upgrade virtualenv
@@ -39,11 +39,11 @@ sudo pip install --upgrade virtualenv
 
 ### Step 2: Get EvalAI code
 
-If you haven't already created an ssh key and added it to your GitHub account,
-you should do that now by following [these
-instructions](https://help.github.com/articles/connecting-to-github-with-ssh/).
+If you haven't already created an ssh key and added it to your GitHub account,then
+you should do that now by following these
+instructions(https://help.github.com/articles/connecting-to-github-with-ssh/).
 
-* In your browser, visit [https://github.com/Cloud-CV/EvalAI](https://github.com/Cloud-CV/EvalAI) and click the `fork` button. You will need to be logged in to GitHub to do this.
+* In your browser, visit [https://github.com/Cloud-CV/EvalAI](https://github.com/Cloud-CV/EvalAI) and click the `fork` button. You will first have to be logged in to GitHub to do this.
 
 * Open Terminal and clone your fork by
 
@@ -70,7 +70,7 @@ pip install -r requirements/dev.txt
 cp settings/dev.sample.py settings/dev.py
 ```
 
-* Create an empty postgres database and run database migration.
+* Create an empty postgres database and run the database migration.
 
 ```
 createdb evalai -U postgres
@@ -92,7 +92,7 @@ bower install
 * To run backend development server at [http://127.0.0.1:8000](http://127.0.0.1:8000), simply do:
 
 ```
-# activate virtual environment if not activated
+# activate virtual environment ,if not activated
 source venv/bin/activate
 python manage.py runserver --settings=settings.dev
 ```
@@ -118,7 +118,7 @@ sudo yum install git-all
 ```shell
 sudo yum install postgresql postgresql-devel
 ```
-If you still encounter issues with pg_config, you may need to add it to your PATH, i.e.
+If you are still encountering issues with pg_config, you may need to add it to your PATH, i.e.,
 ```shell
 export PATH=$PATH:/usr/pgsql-x.x/bin
 ```
@@ -152,10 +152,10 @@ sudo pip install --upgrade virtualenv
 ### Step 2: Get EvalAI code
 
 If you haven't already created an ssh key and added it to your GitHub account,
-you should do that now by following [these
-instructions](https://help.github.com/articles/connecting-to-github-with-ssh/).
+you should do that now by following these
+instructions(https://help.github.com/articles/connecting-to-github-with-ssh/).
 
-* In your browser, visit [https://github.com/Cloud-CV/EvalAI](https://github.com/Cloud-CV/EvalAI) and click the `fork` button. You will need to be logged in to GitHub to do this.
+* In your browser, visit [https://github.com/Cloud-CV/EvalAI](https://github.com/Cloud-CV/EvalAI) and click the `fork` button. You will have to log in to GitHub to do this.
 
 * Open Terminal and clone your fork by
 
@@ -231,7 +231,7 @@ gulp dev:runserver
 
 ### Common Errors
 
-__Error__: *You need to install postgresql-server-dev-X.Y for building a server-side extension or libpq-dev for building a client-side application.*
+__Error__: *You need to install postgresql-server-dev-X.Y for building a server-side extension or libpq-dev to build a client-side application.*
 
 __Solution__: Install libpq-dev
 
@@ -251,7 +251,7 @@ You can also use Docker Compose to run all the components of EvalAI together. Th
     git clone https://github.com/Cloud-CV/EvalAI.git evalai && cd evalai
     ```
 
-2. Build and run the Docker containers. This might take a while. You should be able to access EvalAI at `localhost:8888`.
+2. Build and run the Docker containers. This may take a while. You should be able to access EvalAI at `localhost:8888`.
 
     ```
     docker-compose -f docker-compose.dev.yml up -d --build
