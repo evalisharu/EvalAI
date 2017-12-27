@@ -22,7 +22,7 @@ Contents:
    pull_request
    glossary
 
-Indices and tables
+Indices and tables:
 ==================
 
 * :ref:`genindex`
