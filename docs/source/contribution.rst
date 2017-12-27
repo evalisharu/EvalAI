@@ -2,7 +2,7 @@ Contributing guidelines
 -----------------------
 
 Thank you for your interest in contributing to EvalAI! Here are a few
-pointers on how you can help.
+pointers on how we can help you.
 
 Setting things up
 ~~~~~~~~~~~~~~~~~
@@ -14,14 +14,14 @@ Finding something to work on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 EvalAI's issue tracker is good place to start. If you find something
-that interests you, comment on the thread and we’ll help get you
+that interests you, comment on the thread and we’ll help  you get
 started.
 
 Alternatively, if you come across a new bug on the site, please file a
 new issue and comment if you would like to be assigned. Existing
 issues are tagged with one or more labels, based on the part of the
 website it touches, its importance etc., which can help you select
-one.
+one of the issues.
 
 If neither of these seem appealing, please post on our channel and we
 will help find you something else to work on.
@@ -29,15 +29,15 @@ will help find you something else to work on.
 Instructions to submit code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before you submit code, please talk to us via the issue tracker so we
+Before you submit code, please talk to us via the issue tracker so that we will 
 know you are working on it.
 
 Our central development branch is `development`. Coding is done on feature
-branches based off of development and merged into it once stable and
-reviewed. To submit code, follow these steps:
+branches based off of development and is merged into it ,once stabled and
+reviewed. To submit the code, follow these steps:
 
 1. Create a new branch off of development. Select a descriptive branch
-   name. We highly encourage you to use `autopep8` to follow the PEP8 styling. Run the following command before creating the pull request:
+   name. We highly encourage you to use `autopep8` to follow the PEP8 styling.Please run the following command before creating the pull request:
 
    ::
 
@@ -46,24 +46,24 @@ reviewed. To submit code, follow these steps:
        git fetch upstream
        git checkout master
        git merge upstream/master
-       git checkout -b your-branch-name
+       git checkout -b your-branch-name.
 
 2. Commit and push code to your branch:
 
-   -  Commits should be self-contained and contain a descriptive commit
+   -  Commits should be self-contained .it must contain a descriptive commit
       message.
    -  Please make sure your code is well-formatted and adheres to PEP8
       conventions (for Python) and the airbnb style guide (for
       JavaScript). For others (Lua, prototxt etc.) please ensure that
       the code is well-formatted and the style consistent.
-   -  Please ensure that your code is well tested.
+   -  Also ensure that your code is well tested.
 
       ::
 
           git commit -a -m “{{commit_message}}”
           git push origin {{branch_name}}
 
-3. Once the code is pushed, create a pull request:
+3. Once the code is pushed, you can create a pull request:
 
    -  On your Github fork, select your branch and click “New pull
       request”. Select “master” as the base branch and your branch in
