@@ -2,7 +2,7 @@ Contributing guidelines
 -----------------------
 
 Thank you for your interest in contributing to EvalAI! Here are a few
-pointers on how you can help.
+pointers on how we can help you.
 
 Setting things up
 ~~~~~~~~~~~~~~~~~
@@ -14,7 +14,7 @@ Finding something to work on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 EvalAI's issue tracker is good place to start. If you find something
-that interests you, comment on the thread and we’ll help get you
+that interests you, comment on the thread and we’ll help you get
 started.
 
 Alternatively, if you come across a new bug on the site, please file a
@@ -29,15 +29,15 @@ will help find you something else to work on.
 Instructions to submit code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before you submit code, please talk to us via the issue tracker so we
+Before you submit code, please talk to us via the issue tracker so that we will
 know you are working on it.
 
 Our central development branch is `development`. Coding is done on feature
-branches based off of development and merged into it once stable and
-reviewed. To submit code, follow these steps:
+branches based off of development and merged into it once stabled and
+reviewed. To submit the code, follow these steps:
 
 1. Create a new branch off of development. Select a descriptive branch
-   name. We highly encourage you to use `autopep8` to follow the PEP8 styling. Run the following command before creating the pull request:
+   name. We highly encourage you to use `autopep8` to follow the PEP8 styling. Please run the following command before creating the pull request:
 
    ::
 
@@ -56,14 +56,14 @@ reviewed. To submit code, follow these steps:
       conventions (for Python) and the airbnb style guide (for
       JavaScript). For others (Lua, prototxt etc.) please ensure that
       the code is well-formatted and the style consistent.
-   -  Please ensure that your code is well tested.
+   -  Also ensure that your code is well tested.
 
       ::
 
           git commit -a -m “{{commit_message}}”
           git push origin {{branch_name}}
 
-3. Once the code is pushed, create a pull request:
+3. Once the code is pushed,  you can create a pull request:
 
    -  On your Github fork, select your branch and click “New pull
       request”. Select “master” as the base branch and your branch in
