@@ -2,13 +2,13 @@
 
 ### How are submissions processed?
 
-We are using REST API's along with Queue based architecture to process submissions. When a participant makes a submission for a challenge, a REST API with url pattern `jobs:challenge_submission` is called. This API does the task of creating a new entry for submission model and then publishes a message to exchange `evalai_submissions` with a routing key of `submission.*.*`.
+We are using REST API's along with Queue based architecture to process  the submissions. When a participant makes a submission for a challenge, a REST API with url pattern `jobs:challenge_submission` is called. This API does the task of creating a new entry for submission model and then publishes a message to exchange `evalai_submissions` with a routing key of `submission.*.*`.
 
      User makes   --> API  --> Publish  --> RabbitMQ  --> Queue  --> Submission
     a submission               message      Exchange                  worker(s)
 
 
-Exchange receives the message and then routes it to the queue `submission_task_queue`. At the end of `submission_task_queue` are workers (scripts/workers/submission_worker.py) which processes the submission message.
+The exchange receives the message and then routes it to the queue `submission_task_queue`. At the end of `submission_task_queue` are the workers (scripts/workers/submission_worker.py) which processes the submission message.
 
 The worker can be run with
 
@@ -19,7 +19,7 @@ python scripts/workers/submission_worker.py
 
 ### How does the submission worker work?
 
-The submission worker is a python script which is mostly run as a daemon on a production server and simply as a python process in a development environment. To run a submission worker in a development environment,
+The submission worker is a python script which is mostly runs as a daemon in a production server and simply as a python process in a development environment. To run a submission worker in a development environment:
 
 ```
 python scripts/workers/submission_worker.py
@@ -29,7 +29,7 @@ Before a worker fully starts, it does the following actions:
 
 * Creates a new temporary directory for storing all its data files.
 
-* Fetches the list of active challenges from the database. Active challenges are published challenges whose start date is less than present time and end date greater than present time. It loads all the challenge evaluation scripts in a variable called `EVALUATION_SCRIPTS`, with the challenge id as its key. The maps looks like this:
+* Fetches the lists of active challenges from the database. Active challenges are the published challenges whose start date is less than present time and end date greater than present time. It loads all the challenge evaluation scripts in a variable called `EVALUATION_SCRIPTS`, with the challenge id as its key. The maps looks like this:
 
     ```
     EVALUATION_SCRIPTS = {
@@ -40,8 +40,8 @@ Before a worker fully starts, it does the following actions:
 
 * Creates a connection with RabbitMQ by using the connection parameters specified in `settings.RABBITMQ_PARAMETERS`.
 
-* After the connection is successfully created, creates an exchange with the name `evalai_submissions`
-and two queues, one for processing submission message namely `submission_task_queue`, and other for getting add challenge message.
+* After the connection is successfully created,  it then creates an exchange with the name `evalai_submissions`
+and two queues, one for processing submission message is  namely `submission_task_queue`, and the other is for getting the add challenge message.
 
 * `submission_task_queue` is then bound with the routing key of `submission.*.*` and add challenge message queue is bound with a key of `challenge.add.*`
 Whenever a queue is bound to a exchange with any key, it will route the message to the corresponding queue as soon as the exchange receives a message with a key.
@@ -50,7 +50,7 @@ Whenever a queue is bound to a exchange with any key, it will route the message 
 
 e.g. `submission_task_queue` is using `process_submission_callback` as a function, which means that when a message is received in the queue, `process_submission_callback` will be called with the message passed as an argument.
 
-Expressing it informally it will be something like
+Expressing it informally will be something like this:
 
 > _Queue_: Hey _Exchange_, I am `submission_task_queue`. I will be listening to messages from you on binding key of `submission.*.*`
 
@@ -64,7 +64,7 @@ Expressing it informally it will be something like
 
 
 
-When a worker starts, it fetches active challenges from the database and then loads all the challence evaluation scripts in a variable called `EVALUATION_SCRIPTS`, with challenge id as its key. The map would look like
+When a worker starts, it fetches  the active challenges from the database and then loads all the challence evaluation scripts in a variable called `EVALUATION_SCRIPTS`, with challenge id as its key. The map would look like this:
 
 ```
 EVALUATION_SCRIPTS = {
@@ -78,23 +78,23 @@ After the challenges are successfully loaded, it creates a connection with the R
 
 ### How are submissions made?
 
-When the user makes submission on the frontend, the following actions happen sequentially
+When the user makes submission on the frontend, the following actions happen sequentially:
 
 * As soon as the user submits a submission, a REST API with the URL pattern `jobs:challenge_submission` is called.
 
 * This API fetches the challenge and its corresponding challenge phase.
 
-* This API then checks if the challenge is active and challenge phase is public.
+* This API then checks if the challenge is active and the challenge phase is public.
 
-* It fetches the participant team's ID and its corresponding object.
+* It fetches the participant team's ID and its corresponding objects.
 
-* After all these checks are complete, a submission object is saved. The saved submission object includes __participant team id__ and __challenge phase id__ and __username__ of the participant creating it.
+* After all these checks are completed, a submission object is saved. The saved submission object includes __participant team id__ and __challenge phase id__ and __username__ of the participant creating it.
 
 * At the end, a submission message is published to exchange `evalai_submissions` with a routing key of `submission.*.*`.
 
 ### Format of submission messages
 
-The format of the message is
+The format of the message is:
 
 ```
 {
@@ -122,7 +122,7 @@ Upon receiving a message from `submission_task_queue` with a binding key of `sub
     * If the key does not exist, then the submission is marked as __FAILED__.
     * If the key exists, then the variable `submission_output` is parsed and `DataSetSplit` objects are created. LeaderBoardData objects are also created (in bulk) with the required parameters. Finally, the submission is marked as __FINISHED__.
 
-* The value in the temporarily updated `stderr` and `stdout` are stored in files named `stderr.txt` and `stdout.txt` which are then stored in the submission instance.
+* The value in the temporarily updated `stderr` and `stdout` are stored in the files named as`stderr.txt` and `stdout.txt` which are then stored in the submission instance.
 
 * Finally, the temporary computation directory allocated for this submission is removed.
 
