@@ -1,12 +1,12 @@
 ## Evaluation Script
 
-Each challenge has an evaluation script, which evaluates the submission of participants and returns the scores which will populate the leaderboard.
+Each challenge has an evaluation script, which evaluates the submission of the participants and returns the scores which will populate the leaderboard.
 
-The logic for evaluating and judging a submission is customizable and varies from challenge to challenge, but the overall structure of evaluation scripts are fixed due to architectural reasons.
+The logic for evaluating and judging a submission is customizable and varies from challenge to challenge, but the overall structure of  the evaluation scripts are fixed due to  the architectural reasons.
 
 Evaluation scripts are required to have an `evaluate` function. This is the main function, which is used by workers to evaluate the submission messages.
 
-The syntax of evaluate function is
+The syntax of evaluate function is as follows:
 
 ```
 
@@ -20,7 +20,7 @@ It receives three arguments, namely:
 
 * test_annotation_file
 
-This is the path to the annotation file for the challenge. This is the file uploaded by the Challenge Host while creating a Challenge.
+This is the path to the annotation file for the challenge. It is uploaded by the Challenge Host while creating a Challenge.
 
 * user_annotation_file
 
@@ -28,7 +28,7 @@ This is the path of the file submitted by the user for a particular phase.
 
 * phase_codename
 
-This is the `ChallengePhase` model codename. This is passed as an argument, so that the script can take actions according to the phase.
+This is the `ChallengePhase` model codename. It is passed as an argument, so that the script can take actions according to the phase.
 
 After reading the files, some custom actions can be performed. This varies per challenge.
 
@@ -52,4 +52,4 @@ output['result'] = [
 
 ```
 
-`output` should contain a key named `result`, which is a list containing entries per challenge phase split. Each challenge phase split object contains various keys, which are then displayed as columns in leaderboard.
+`output` should contain a key ,named `result`, which is a list containing entries per challenge phase split. Each challenge phase split object contains various keys, which are then displayed as columns in the leaderboard.
